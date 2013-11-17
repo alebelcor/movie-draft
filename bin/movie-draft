@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+
+var program    = require('commander'),
+
+    fs         = require('fs'),
+
+    MovieDraft = require('../'),
+
+    movieDraft,
+    movies;
+
+
+program
+    .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
+
+    .option('-i, --input <file.json>', 'input JSON file. defaults to input.json')
+    .option('-o, --output <file>', 'output text file. defaults to output.txt');
+
+
+// parse command-line arguments
+
+program.parse(process.argv);
+
+
+// default input file to `input.json`
+
+program.input = program.input || 'input.json';
+
+try {
+    movies = JSON.parse(
+        fs.readFileSync(program.input, 'utf8')
+            .trim()
+    );
+} catch (e) {
+    throw new Error('Input file (' + program.input + ') could not be read.');
+}
+
+
+movieDraft = new MovieDraft({
+    'movies': movies,
+    'output': program.output || 'output.txt'
+});
+
+
+movieDraft.run(process.exit);

@@ -1,53 +1,130 @@
+/**
+ * Module dependencies
+ */
 var fs       = require('fs'),
-
-    async    = require('async'),
     request  = require('request'),
     cheerio  = require('cheerio'),
-    entities = require('entities'),
+    entities = require('entities');
 
-    inputFile  = 'winter-draft-2013.json',
-    outputFile = 'output.txt',
 
-    movies = JSON.parse(fs.readFileSync(inputFile, 'utf8')),
+/**
+ * Setup movie-draft with `options`.
+ *
+ * Options:
+ *
+ *   - `movies` movies object
+ *   - `output` output file
+ *
+ * @param {Object} options
+ */
+function MovieDraft(options) {
+    options = options || {};
 
-    fetchMovieRevenue = function (movie) {
-        var movieName,
-            revenue,
-            $;
+    this.data   = [];
+    this.movies = options.movies;
+    this.output = options.output;
+}
 
-        request.get(movie.url, function (err, res, body) {
-            var lineToAppend;
 
-            if (err) {
-                throw err;
-            }
+/**
+ * Get the data of a movie.
+ *
+ * Movie:
+ *
+ *   - `id` ID of the movie
+ *
+ * @param {Object} movie
+ */
+MovieDraft.prototype.getData = function (movie) {
+    var self = this,
+        movieName,
+        revenue,
+        $;
 
-            $ = cheerio.load(body);
+    request.get('http://boxofficemojo.com/movies/?id=' + movie.id, function (err, res, body) {
+        var movieObj;
 
-            movieName = $('td > font > b').html();
-            movieName = entities.decode(movieName)
-                .replace('<br>', ' ');
+        if (err) {
+            throw err;
+        }
 
-            revenue = $('td:first-child > font > b').html();
+        $ = cheerio.load(body);
 
-            if (revenue === null || revenue.indexOf('$') === -1) {
-                revenue = 'N/A';
-            } else {
-                revenue = revenue.replace(' (Estimate)', '');
-            }
+        movieName = $('td > font > b').html();
+        movieName = entities.decode(movieName)
+            .replace('<br>', ' ');
 
-            lineToAppend = movieName + ' -> ' + revenue + '\n';
+        revenue = $('td:first-child > font > b').html();
 
-            // append result to file
-            fs.appendFile(outputFile, lineToAppend);
-        });
-    };
+        if (revenue === null || revenue.indexOf('$') === -1) {
+            revenue = 'N/A';
+        } else {
+            revenue = revenue.replace(' (Estimate)', '');
+        }
 
-// empty the file
-fs.openSync(outputFile, 'w');
+        movieObj = {
+            'name'   : movieName,
+            'revenue': revenue
+        };
 
-async.forEach(movies, fetchMovieRevenue, function (err) {
-    if (err) {
-        throw err;
+        self.data[self.data.length] = movieObj;
+
+        self.save(movieObj);
+    });
+
+    return this;
+};
+
+
+/**
+ * Iterate through all movies and get their data.
+ */
+MovieDraft.prototype.getAllData = function () {
+    var i,
+        len;
+
+    for (i = 0, len = this.movies.length; i < len; i += 1) {
+        this.getData(this.movies[i]);
     }
-});
+
+    return this;
+};
+
+
+/**
+ * Format the output and save it to the file.
+ *
+ * Movie:
+ *
+ *   - `name` name of the movie
+ *   - `revenue` revenue of the movie
+ *
+ * @param {Object} movie
+ */
+MovieDraft.prototype.save = function (movie) {
+    var lineToAppend = '';
+
+    lineToAppend = movie.name + ' ->' + movie.revenue + '\n';
+
+    // append result to file
+    fs.appendFile(this.output, lineToAppend);
+
+    return this;
+};
+
+
+/**
+ * Empty output file and get data.
+ */
+MovieDraft.prototype.run = function () {
+    fs.openSync(this.output, 'w');
+
+    this.getAllData();
+};
+
+
+/**
+ * Expose `MovieDraft`.
+ */
+
+exports = module.exports = MovieDraft;

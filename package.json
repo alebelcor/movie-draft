@@ -1,12 +1,16 @@
 {
   "name": "movie-draft",
-  "private": "true",
-  "version": "0.0.1-dev",
+  "version": "0.0.2-dev",
+
+  "bin": "./bin/movie-draft",
   "main": "index",
+  "preferGlobal": true,
+  "private": true,
+
   "dependencies": {
-    "async": "~0.2.9",
     "cheerio": "~0.12.2",
-    "request": "~2.27.0",
-    "entities": "~0.3.0"
+    "commander": "~2.0.0",
+    "entities": "~0.3.0",
+    "request": "~2.27.0"
   }
 }
