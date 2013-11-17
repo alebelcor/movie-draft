@@ -1,16 +1,33 @@
 {
   "name": "movie-draft",
   "version": "0.0.2-dev",
-
+  "description": "A web scrapper that gets the domestic gross of a list of movies from the Box Office Mojo website",
+  "keywords": [
+    "web",
+    "scrapper",
+    "movie",
+    "draft"
+  ],
+  "bugs": "https://github.com/alebelcor/movie-draft/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Alejandro Beltrán",
+    "email": "alebelcor@gmail.com"
+  },
+  "main": "./index.js",
   "bin": "./bin/movie-draft",
-  "main": "index",
-  "preferGlobal": true,
-  "private": true,
-
+  "directories": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alebelcor/movie-draft.git"
+  },
   "dependencies": {
     "cheerio": "~0.12.2",
     "commander": "~2.0.0",
     "entities": "~0.3.0",
     "request": "~2.27.0"
-  }
+  },
+  "devDependencies": {},
+  "preferGlobal": true,
+  "private": true
 }
