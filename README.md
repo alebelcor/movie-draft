@@ -11,6 +11,8 @@ This is how the draft works:
 * You'll get a point for every domestic (US) gross dollar a movie of yours makes.
 * The player with the most points wins the movie draft.
 
+More information [here](http://www.youtube.com/watch?v=s49yF-kZ8mg)
+
 
 ## What does `movie-draft.js` do?
 
