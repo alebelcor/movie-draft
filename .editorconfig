@@ -14,7 +14,7 @@ trim_trailing_whitespace = true
 
 
 # JavaScript: 4 space indentation
-[*.{js,json}]
+[*.js]
 indent_style = space
 indent_size = 4
 
