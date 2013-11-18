@@ -1,6 +1,6 @@
 {
   "name": "movie-draft",
-  "version": "0.0.2-dev",
+  "version": "0.0.1",
   "description": "A web scrapper that gets the domestic gross of a list of movies from the Box Office Mojo website",
   "keywords": [
     "web",
@@ -12,7 +12,8 @@
   "license": "MIT",
   "author": {
     "name": "Alejandro Beltrán",
-    "email": "alebelcor@gmail.com"
+    "email": "alebelcor@gmail.com",
+    "url": "http://alebelcor.github.io/"
   },
   "files": [
     "bin",
@@ -48,6 +49,5 @@
     "grunt-contrib-watch": "~0.5.3",
     "load-grunt-tasks": "~0.2.0"
   },
-  "preferGlobal": true,
-  "private": true
+  "preferGlobal": true
 }
