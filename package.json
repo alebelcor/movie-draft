@@ -14,12 +14,24 @@
     "name": "Alejandro Beltrán",
     "email": "alebelcor@gmail.com"
   },
-  "main": "./index.js",
+  "files": [
+    "bin",
+    "dist/movie-draft.min.js",
+    "examples"
+  ],
+  "main": "./src/main.js",
   "bin": "./bin/movie-draft",
-  "directories": [],
+  "directories": {
+    "bin": "./bin",
+    "examples": "./examples"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alebelcor/movie-draft.git"
+  },
+  "scripts": {
+    "prepublish": "grunt build",
+    "test": "grunt test"
   },
   "dependencies": {
     "cheerio": "~0.12.2",
@@ -27,7 +39,15 @@
     "entities": "~0.3.0",
     "request": "~2.27.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "load-grunt-tasks": "~0.2.0"
+  },
   "preferGlobal": true,
   "private": true
 }

@@ -18,6 +18,8 @@ var fs       = require('fs'),
  * @param {Object} options
  */
 function MovieDraft(options) {
+    'use strict';
+
     options = options || {};
 
     this.data   = [];
@@ -36,12 +38,15 @@ function MovieDraft(options) {
  * @param {Object} movie
  */
 MovieDraft.prototype.getData = function (movie) {
+    'use strict';
+
     var self = this,
+        movieSite = 'http://boxofficemojo.com/movies/?id=' + movie.id,
         movieName,
         revenue,
         $;
 
-    request.get('http://boxofficemojo.com/movies/?id=' + movie.id, function (err, res, body) {
+    request.get(movieSite, function (err, res, body) {
         var movieObj;
 
         if (err) {
@@ -80,6 +85,8 @@ MovieDraft.prototype.getData = function (movie) {
  * Iterate through all movies and get their data.
  */
 MovieDraft.prototype.getAllData = function () {
+    'use strict';
+
     var i,
         len;
 
@@ -102,6 +109,8 @@ MovieDraft.prototype.getAllData = function () {
  * @param {Object} movie
  */
 MovieDraft.prototype.save = function (movie) {
+    'use strict';
+
     var lineToAppend = '';
 
     lineToAppend = movie.name + ' ->' + movie.revenue + '\n';
@@ -117,6 +126,8 @@ MovieDraft.prototype.save = function (movie) {
  * Empty output file and get data.
  */
 MovieDraft.prototype.run = function () {
+    'use strict';
+
     fs.openSync(this.output, 'w');
 
     this.getAllData();

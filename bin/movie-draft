@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 
 
-var program    = require('commander'),
+var fs         = require('fs'),
 
-    fs         = require('fs'),
+    pkg        = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')),
 
-    MovieDraft = require('../'),
+    program    = require('commander'),
+    MovieDraft = require('../dist/' + pkg.name + '.min.js'),
 
     movieDraft,
     movies;
 
 
 program
-    .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
+    .version(pkg.version)
 
     .option('-i, --input <file.json>', 'input JSON file. defaults to input.json')
     .option('-o, --output <file>', 'output text file. defaults to output.txt');
