@@ -113,7 +113,7 @@ MovieDraft.prototype.save = function (movie) {
 
     var lineToAppend = '';
 
-    lineToAppend = movie.name + ' ->' + movie.revenue + '\n';
+    lineToAppend = movie.name + ' -> ' + movie.revenue + '\n';
 
     // append result to file
     fs.appendFile(this.output, lineToAppend);
