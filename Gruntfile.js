@@ -19,6 +19,15 @@ module.exports = function (grunt) {
             ' */' + '\n\n\n',
 
         // Task configuration
+        bumpup: {
+            options: {
+                updateProps: {
+                    pkg: 'package.json'
+                }
+            },
+            file: 'package.json'
+        },
+
         clean: {
             files: ['dist'],
             dist : ['dist/movie-draft.js']
