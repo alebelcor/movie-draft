@@ -1,40 +1,37 @@
-# movie-draft.js
+# movie-draft
 
-## What is a "movie draft"?
+> Get the data of a list of Box Office Mojo's movies.
 
-This is how the draft works:
+[![Build Status](https://travis-ci.org/alebelcor/movie-draft.svg)](https://travis-ci.org/alebelcor/movie-draft)
 
-* We have a list of unreleased movies.
-* Each player has 100 dollars/rupies/whatever to spend over the entire draft.
-* The draft will be conducted as an auction featuring the unreleased movies as items.
-* At the end of the auction, each player will have a list of movies.
-* You'll get a point for every domestic (US) gross dollar a movie of yours makes.
-* The player with the most points wins the movie draft.
+## Install
 
-More information [here](http://www.youtube.com/watch?v=s49yF-kZ8mg)
-
-
-## What does `movie-draft.js` do?
-
-It will scrape the Box Office Mojo website and get the domestic gross of a list of movies into a text file.
-
-
-## Installation
-
-You can install movie-draft.js using `npm`:
-
-    npm install -g movie-draft
-
+```bash
+npm install --save movie-draft
+```
 
 ## Usage
 
-    movie-draft -i input.json -o output.txt
+```js
+var movieDraft = require('movie-draft');
 
+movieDraft(['pulpfiction.htm']); // [ { title: 'Pulp Fiction': domesticGross: 107928762 } ]
+```
 
-### Input JSON
+## API
 
-The input should be an array of objects, each object should have an `ID` property with a value that corresponds to the movie ID at [Box Office Mojo](http://boxofficemojo.com).
+### movieDraft(movieIds)
 
-Please take a look at the example JSON files in the repo for reference.
+Returns a **promise** that will resolve to an array of objects with the data of the Box Office Mojo's movie.
 
-Note: [This is a work in progress](http://www.youtube.com/watch?v=X8u7px_GzWQ)
+#### movieIds
+
+Type: `array` of `strings`
+
+An array of one or more IDs of movies as presented in [Box Office Mojo](http://www.boxofficemojo.com/).
+
+Example: The ID for [Pulp Fiction](http://www.boxofficemojo.com/movies/?id=pulpfiction.htm) would be `pulpfiction.htm`.
+
+## License
+
+MIT © Alejandro Beltrán

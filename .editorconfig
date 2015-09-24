@@ -11,20 +11,8 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-
-# JavaScript: 4 space indentation
-[*.js]
-indent_style = space
-indent_size = 4
-
-
-# JSON: 2 space indentation
-[*.json]
 indent_style = space
 indent_size = 2
 
-
-# Shell: tab indentation
-[*.sh]
-indent_style = tab
+[*.md]
+trim_trailing_whitespace = false

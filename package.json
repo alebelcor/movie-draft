@@ -1,54 +1,37 @@
 {
   "name": "movie-draft",
   "version": "0.0.1",
-  "description": "A web scrapper that gets the domestic gross of a list of movies from the Box Office Mojo website",
+  "description": "Get the data of a list of Box Office Mojo's movies",
   "keywords": [
-    "web",
-    "scrapper",
+    "box office mojo",
+    "movies",
     "movie",
-    "draft"
+    "movie title",
+    "movie gross"
   ],
-  "bugs": "https://github.com/alebelcor/movie-draft.js/issues",
+  "bugs": "https://github.com/alebelcor/movie-draft/issues",
   "license": "MIT",
   "author": {
     "name": "Alejandro Beltrán",
     "email": "alebelcor@gmail.com",
-    "url": "http://alebelcor.github.io/"
+    "url": "https://github.com/alebelcor"
   },
   "files": [
-    "bin",
-    "dist/movie-draft.min.js",
-    "examples"
+    "index.js"
   ],
-  "main": "./src/main.js",
-  "bin": "./bin/movie-draft",
-  "directories": {
-    "bin": "./bin",
-    "examples": "./examples"
-  },
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alebelcor/movie-draft.js.git"
+    "url": "https://github.com/alebelcor/movie-draft.git"
   },
   "scripts": {
-    "prepublish": "grunt build",
-    "test": "grunt test"
+    "test": "ava"
   },
   "dependencies": {
-    "cheerio": "~0.12.2",
-    "commander": "~2.0.0",
-    "entities": "~0.3.0",
-    "request": "~2.27.0"
+    "bluebird": "^2.10.1",
+    "box-office-mojo-movie": "^0.1.2"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-bumpup": "~0.4.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-watch": "~0.5.3",
-    "load-grunt-tasks": "~0.2.0"
-  },
-  "preferGlobal": true
+    "ava": "^0.2.0"
+  }
 }
