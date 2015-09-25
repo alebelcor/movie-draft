@@ -15,7 +15,7 @@ npm install --save movie-draft
 ```js
 var movieDraft = require('movie-draft');
 
-movieDraft(['pulpfiction.htm']); // [ { title: 'Pulp Fiction': domesticGross: 107928762 } ]
+movieDraft(['pulpfiction.htm']); // [ { title: 'Pulp Fiction', domesticGross: 107928762 } ]
 ```
 
 ## API
