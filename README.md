@@ -22,7 +22,7 @@ movieDraft(['pulpfiction.htm']); // [ { title: 'Pulp Fiction', domesticGross: 10
 
 ### movieDraft(movieIds)
 
-Returns a **promise** that will resolve to an array of objects with the data of the Box Office Mojo's movie.
+Returns a **promise** that resolves to an array of objects with the data of the Box Office Mojo's movie.
 
 #### movieIds
 
