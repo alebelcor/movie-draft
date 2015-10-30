@@ -1,7 +1,7 @@
 'use strict';
 
 var boxOfficeMojoMovie = require('box-office-mojo-movie');
-var Promise = require('bluebird');
+var Promise = require('pinkie-promise');
 
 module.exports = function (movieIds) {
   var isAnyMovieIdInvalid;

@@ -28,10 +28,10 @@
     "test": "ava"
   },
   "dependencies": {
-    "bluebird": "^2.10.1",
-    "box-office-mojo-movie": "^0.1.2"
+    "box-office-mojo-movie": "^0.1.2",
+    "pinkie-promise": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.2.0"
+    "ava": "^0.3.0"
   }
 }
