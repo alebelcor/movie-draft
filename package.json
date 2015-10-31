@@ -1,6 +1,6 @@
 {
   "name": "movie-draft",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Get the data of a list of Box Office Mojo's movies",
   "keywords": [
     "box office mojo",
