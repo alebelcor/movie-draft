@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('ava');
-var movieDraft = require('./');
+var movieDraft = require('../');
 
 test('it should throw an error if not an array or empty', function (t) {
   t.throws(function () { return movieDraft({}); });

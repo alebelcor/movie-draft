@@ -2,7 +2,9 @@
 
 > Get the data of a list of Box Office Mojo's movies.
 
+[![npm version](https://img.shields.io/npm/v/movie-draft.svg)](https://npmjs.org/package/movie-draft)
 [![Build Status](https://travis-ci.org/alebelcor/movie-draft.svg)](https://travis-ci.org/alebelcor/movie-draft)
+[![Test Coverage](https://img.shields.io/coveralls/alebelcor/movie-draft/master.svg)](https://coveralls.io/github/alebelcor/movie-draft)
 
 ## Install
 
